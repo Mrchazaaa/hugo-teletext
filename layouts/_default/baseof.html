@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="{{ site.LanguageCode | default `en` }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+  <link rel="icon" type="image/x-icon" href="{{ `star.ico` | relURL }}">
+  <link rel="apple-touch-icon" href="{{ `star.ico` | relURL }}">
+  <link rel="preload" href="{{ `fonts/MODE7GX3.TTF` | relURL }}" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="{{ `css/teletext.css` | relURL }}">
+</head>
+<body>
+  {{ block "main" . }}{{ end }}
+  <script src="{{ `js/clock.js` | relURL }}" defer></script>
+</body>
+</html>

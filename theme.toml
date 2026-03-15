@@ -1,0 +1,12 @@
+name = "hugo-teletext"
+license = "MIT"
+licenselink = "https://opensource.org/licenses/MIT"
+description = "A teletext-inspired Hugo theme."
+homepage = "https://github.com/Mrchazaaa/hugo-teletext"
+tags = ["portfolio", "blog", "teletext", "retro"]
+features = ["responsive", "single-page"]
+min_version = "0.115.0"
+
+[author]
+  name = "Charlie Howlett"
+  homepage = "https://charliehowlett.co.uk/"

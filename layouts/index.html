@@ -1,0 +1,40 @@
+{{ define "main" }}
+  <main class="page" aria-label="{{ .Title }} portfolio">
+    <header class="topline">
+      <span>{{ site.Params.pageNumber | default "P100" }}</span>
+      <span></span>
+      <span id="clock">--:--:-- -- ---</span>
+    </header>
+
+    <section class="headline">
+      <div class="headline__name">{{ .Title | upper }}</div>
+    </section>
+
+    <section class="content-panel">
+      <div class="row">
+        <div class="label">ROLE</div>
+        <div class="message">{{ .Params.role | upper }}</div>
+      </div>
+
+      <div class="row">
+        <div class="label">LOCATION</div>
+        <div class="message">{{ .Params.location | upper }}</div>
+      </div>
+
+      <div class="row">
+        <div class="label">STATUS</div>
+        <div class="message">{{ .Params.status | upper }}</div>
+      </div>
+
+      <div class="row">
+        <div class="label">LINKS</div>
+        <div class="links">
+          {{ range .Params.links }}
+            {{ $isExternal := or (hasPrefix .url "https://") (hasPrefix .url "http://") }}
+            <a href="{{ if $isExternal }}{{ .url }}{{ else }}{{ .url | relURL }}{{ end }}"{{ if $isExternal }} target="_blank" rel="noreferrer"{{ end }}>{{ .name | upper }}</a>
+          {{ end }}
+        </div>
+      </div>
+    </section>
+  </main>
+{{ end }}
