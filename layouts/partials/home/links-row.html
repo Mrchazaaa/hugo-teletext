@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="label">LINKS</div>
+  <div class="links">
+    {{ range .Params.links }}
+      {{ $isExternal := or (hasPrefix .url "https://") (hasPrefix .url "http://") }}
+      <a href="{{ if $isExternal }}{{ .url }}{{ else }}{{ .url | relURL }}{{ end }}"{{ if $isExternal }} target="_blank" rel="noreferrer"{{ end }}>{{ .name | upper }}</a>
+    {{ end }}
+  </div>
+</div>

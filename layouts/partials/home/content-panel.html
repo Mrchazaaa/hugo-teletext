@@ -1,0 +1,6 @@
+<section class="content-panel">
+  {{ partial "home/content-row.html" (dict "label" "Role" "value" (.Params.role | upper)) }}
+  {{ partial "home/content-row.html" (dict "label" "Location" "value" (.Params.location | upper)) }}
+  {{ partial "home/content-row.html" (dict "label" "Status" "value" (.Params.status | upper)) }}
+  {{ partial "home/links-row.html" . }}
+</section>
