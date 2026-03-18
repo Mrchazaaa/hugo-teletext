@@ -26,9 +26,13 @@ pageNumber = "P100"
 ```yaml
 ---
 title: "Your Name"
-role: "Designer / Developer"
-location: "London, UK"
-status: "Available for freelance"
+rows:
+  - label: "Role"
+    value: "Designer / Developer"
+  - label: "Location"
+    value: "London, UK"
+  - label: "Status"
+    value: "Available for freelance"
 links:
   - name: "GitHub"
     url: "https://github.com/yourname"

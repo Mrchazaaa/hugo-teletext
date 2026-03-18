@@ -1,0 +1,9 @@
+<section class="content-panel">
+  {{ range .Params.rows }}
+    {{ partial "content-row.html" (dict "label" .label "value" (.value | upper)) }}
+  {{ end }}
+
+  {{ with .Params.links }}
+    {{ partial "links-row.html" $ }}
+  {{ end }}
+</section>
