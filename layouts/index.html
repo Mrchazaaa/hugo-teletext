@@ -1,7 +1,11 @@
 {{ define "main" }}
-  <main class="page" aria-label="{{ .Title }} portfolio">
-    {{ partial "topline.html" . }}
-    {{ partial "headline.html" . }}
-    {{ partial "content-panel.html" . }}
-  </main>
+  {{ partial "headline.html" . }}
+
+  {{ if .Content }}
+    <section class="content-panel">
+      <article class="post-body">
+        {{ .Content }}
+      </article>
+    </section>
+  {{ end }}
 {{ end }}

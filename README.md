@@ -19,26 +19,23 @@ theme = "hugo-teletext"
 ```toml
 [params]
 pageNumber = "P100"
+enableScanlines = true
 ```
 
-## Homepage Front Matter
+## Homepage Content
 
-```yaml
+Use `content/_index.md` for the homepage title and body content. The theme renders the page content directly, so you can use standard Markdown such as tables, paragraphs, headings, and lists.
+
+```markdown
 ---
 title: "Your Name"
-rows:
-  - label: "Role"
-    value: "Designer / Developer"
-  - label: "Location"
-    value: "London, UK"
-  - label: "Status"
-    value: "Available for freelance"
-links:
-  - name: "GitHub"
-    url: "https://github.com/yourname"
-  - name: "Posts"
-    url: "/posts/"
 ---
+
+| Role | Designer / Developer |
+| --- | --- |
+| Location | London, UK |
+| Status | Available for freelance |
+| Links | [GitHub](https://github.com/yourname) [Posts](/posts/) |
 ```
 
 ## License
