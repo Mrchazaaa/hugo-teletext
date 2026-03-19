@@ -9,7 +9,7 @@
   <link rel="preload" href="{{ `fonts/MODE7GX3.TTF` | relURL }}" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="{{ `css/teletext.css` | relURL }}">
 </head>
-<body>
+<body{{ if site.Params.enableScanlines }} class="scanlines-enabled"{{ end }}>
   <main class="page" aria-label="{{ if .IsHome }}{{ .Title }} portfolio{{ else }}{{ .Title }}{{ end }}">
     {{ partial "topline.html" . }}
     {{ block "main" . }}{{ end }}

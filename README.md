@@ -19,6 +19,7 @@ theme = "hugo-teletext"
 ```toml
 [params]
 pageNumber = "P100"
+enableScanlines = true
 ```
 
 ## Homepage Content
