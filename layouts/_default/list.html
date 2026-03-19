@@ -1,42 +1,34 @@
 {{ define "main" }}
-  <main class="page" aria-label="{{ .Title }}">
-    <header class="topline">
-      <span>{{ site.Params.pageNumber | default "P100" }}</span>
-      <span>{{ .Title | upper }}</span>
-      <span id="clock">--:--:-- -- ---</span>
-    </header>
+  <section class="headline">
+    <div class="headline__name">{{ .Title | upper }}</div>
+  </section>
 
-    <section class="headline">
-      <div class="headline__name">{{ .Title | upper }}</div>
-    </section>
+  <section class="content-panel">
+    {{ if .Content }}
+      <article class="post-body">
+        {{ .Content }}
+      </article>
+    {{ end }}
 
-    <section class="content-panel">
-      {{ if .Content }}
-        <article class="post-body">
-          {{ .Content }}
-        </article>
-      {{ end }}
-
-      {{ range .Pages.ByDate.Reverse }}
-        <div class="row">
-          <div class="label">{{ .Date.Format "02 JAN" | upper }}</div>
-          <div class="message post-listing">
-            <a href="{{ .RelPermalink }}">{{ .Title | upper }}</a>
-          </div>
-        </div>
-      {{ else }}
-        <div class="row">
-          <div class="label">INFO</div>
-          <div class="message">NO POSTS PUBLISHED.</div>
-        </div>
-      {{ end }}
-
+    {{ range .Pages.ByDate.Reverse }}
       <div class="row">
-        <div class="label">HOME</div>
-        <div class="links">
-          <a href="{{ `` | relURL }}">RETURN TO FRONT PAGE</a>
+        <div class="label">{{ .Date.Format "02 JAN" | upper }}</div>
+        <div class="message post-listing">
+          <a href="{{ .RelPermalink }}">{{ .Title | upper }}</a>
         </div>
       </div>
-    </section>
-  </main>
+    {{ else }}
+      <div class="row">
+        <div class="label">INFO</div>
+        <div class="message">NO POSTS PUBLISHED.</div>
+      </div>
+    {{ end }}
+
+    <div class="row">
+      <div class="label">HOME</div>
+      <div class="links">
+        <a href="{{ `` | relURL }}">RETURN TO FRONT PAGE</a>
+      </div>
+    </div>
+  </section>
 {{ end }}

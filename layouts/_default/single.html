@@ -1,39 +1,31 @@
 {{ define "main" }}
-  <main class="page" aria-label="{{ .Title }}">
-    <header class="topline">
-      <span>{{ site.Params.pageNumber | default "P100" }}</span>
-      <span>{{ .Section | upper }}</span>
-      <span id="clock">--:--:-- -- ---</span>
-    </header>
+  <section class="headline">
+    <div class="headline__name">{{ .Title | upper }}</div>
+  </section>
 
-    <section class="headline">
-      <div class="headline__name">{{ .Title | upper }}</div>
-    </section>
+  <section class="content-panel">
+    <div class="row">
+      <div class="label">DATE</div>
+      <div class="message">{{ .Date.Format "02 JAN 2006" | upper }}</div>
+    </div>
 
-    <section class="content-panel">
+    {{ with .Params.description }}
       <div class="row">
-        <div class="label">DATE</div>
-        <div class="message">{{ .Date.Format "02 JAN 2006" | upper }}</div>
+        <div class="label">ABOUT</div>
+        <div class="message">{{ . | upper }}</div>
       </div>
+    {{ end }}
 
-      {{ with .Params.description }}
-        <div class="row">
-          <div class="label">ABOUT</div>
-          <div class="message">{{ . | upper }}</div>
-        </div>
-      {{ end }}
+    <article class="post-body">
+      {{ .Content }}
+    </article>
 
-      <article class="post-body">
-        {{ .Content }}
-      </article>
-
-      <div class="row">
-        <div class="label">MORE</div>
-        <div class="links">
-          <a href="{{ `posts/` | relURL }}">ALL POSTS</a>
-          <a href="{{ `` | relURL }}">HOME</a>
-        </div>
+    <div class="row">
+      <div class="label">MORE</div>
+      <div class="links">
+        <a href="{{ `posts/` | relURL }}">ALL POSTS</a>
+        <a href="{{ `` | relURL }}">HOME</a>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 {{ end }}

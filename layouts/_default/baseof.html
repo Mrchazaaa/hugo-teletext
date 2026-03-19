@@ -10,7 +10,10 @@
   <link rel="stylesheet" href="{{ `css/teletext.css` | relURL }}">
 </head>
 <body>
-  {{ block "main" . }}{{ end }}
+  <main class="page" aria-label="{{ if .IsHome }}{{ .Title }} portfolio{{ else }}{{ .Title }}{{ end }}">
+    {{ partial "topline.html" . }}
+    {{ block "main" . }}{{ end }}
+  </main>
   <script src="{{ `js/clock.js` | relURL }}" defer></script>
 </body>
 </html>

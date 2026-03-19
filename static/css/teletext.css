@@ -113,12 +113,52 @@ body {
 
 .post-body p,
 .post-body ul,
-.post-body ol {
+.post-body ol,
+.post-body table {
   margin: 0;
 }
 
-.post-body a {
-  text-decoration: underline;
+.post-body h1,
+.post-body h2,
+.post-body h3,
+.post-body h4,
+.post-body h5,
+.post-body h6 {
+  margin: 0;
+  color: var(--cyan);
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.post-body tr {
+  display: grid;
+  grid-template-columns: 12ch 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.post-body td,
+.post-body th {
+  padding: 0.35rem 0;
+  text-align: left;
+  font-weight: 400;
+  vertical-align: top;
+}
+
+.post-body td:first-child,
+.post-body th:first-child {
+  color: var(--cyan);
+  width: 12ch;
+}
+
+.post-body ul,
+.post-body ol {
+  padding-left: 12ch;
 }
 
 .post-listing a {
@@ -178,6 +218,16 @@ a:focus-visible {
   .row {
     grid-template-columns: 1fr;
     gap: 4px;
+  }
+
+  .post-body tr {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .post-body ul,
+  .post-body ol {
+    padding-left: 1.5rem;
   }
 
   .footer {
