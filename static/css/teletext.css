@@ -13,6 +13,11 @@
   --red: #ff4a4a;
   --green: #5dff6d;
   --magenta: #ff4fd8;
+  --layout-gap: 12px;
+  --label-width: 12ch;
+  --content-spacing: 0.35rem;
+  --list-indent-ul: 1.25em;
+  --list-indent-ol: 2.5em;
 }
 
 * {
@@ -78,7 +83,6 @@ body {
 .headline {
   display: grid;
   gap: 6px;
-  padding-top: 10px;
 }
 
 .headline__name {
@@ -89,7 +93,6 @@ body {
   line-height: 1;
   text-align: center;
   padding: 14px 16px 12px;
-  white-space: nowrap;
   text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.75);
 }
 
@@ -102,8 +105,8 @@ body {
 
 .row {
   display: grid;
-  grid-template-columns: 12ch 1fr;
-  gap: 12px;
+  grid-template-columns: var(--label-width) 1fr;
+  gap: var(--layout-gap);
   align-items: start;
 }
 
@@ -123,7 +126,6 @@ body {
 
 .post-body {
   display: grid;
-  gap: 12px;
   color: var(--white);
 }
 
@@ -138,7 +140,13 @@ body {
 .post-body p,
 .post-body ul,
 .post-body ol,
-.post-body table {
+.post-body table,
+.post-body h1,
+.post-body h2,
+.post-body h3,
+.post-body h4,
+.post-body h5,
+.post-body h6 {
   margin: 0;
 }
 
@@ -148,10 +156,23 @@ body {
 .post-body h4,
 .post-body h5,
 .post-body h6 {
-  margin: 0;
-  color: var(--cyan);
-  font-size: 1em;
+  font-size: 1.5em;
   font-weight: 400;
+  /* color: var(--cyan); */
+}
+
+.post-body h1,
+.post-body h2,
+.post-body h3,
+.post-body h4,
+.post-body h5,
+.post-body h6,
+.post-body p,
+.post-body table,
+.post-body ol,
+.post-body hr,
+.post-body ul {
+  margin: var(--content-spacing) 0;
 }
 
 .post-body table {
@@ -159,16 +180,22 @@ body {
   border-collapse: collapse;
 }
 
+.post-body hr {
+  border: none;
+  height: 3px;
+  background: var(--blue);
+}
+
 .post-body tr {
   display: grid;
-  grid-template-columns: 12ch 1fr;
-  gap: 12px;
+  grid-template-columns: var(--label-width) 1fr;
+  gap: var(--layout-gap);
   align-items: start;
 }
 
 .post-body td,
 .post-body th {
-  padding: 0.35rem 0;
+  padding: var(--content-spacing) 0;
   text-align: left;
   font-weight: 400;
   vertical-align: top;
@@ -177,12 +204,21 @@ body {
 .post-body td:first-child,
 .post-body th:first-child {
   color: var(--cyan);
-  width: 12ch;
+  width: var(--label-width);
 }
 
 .post-body ul,
 .post-body ol {
-  padding-left: 12ch;
+  margin-left: 0;
+  list-style-position: outside;
+}
+
+.post-body ul {
+  padding-left: var(--list-indent-ul);
+}
+
+.post-body ol {
+  padding-left: var(--list-indent-ol);
 }
 
 .post-listing a {
@@ -247,11 +283,6 @@ a:focus-visible {
   .post-body tr {
     grid-template-columns: 1fr;
     gap: 4px;
-  }
-
-  .post-body ul,
-  .post-body ol {
-    padding-left: 1.5rem;
   }
 
   .footer {

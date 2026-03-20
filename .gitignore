@@ -1,0 +1,10 @@
+# Hugo build artifacts
+.hugo_build.lock
+resources/_gen/
+
+# Common local editor/OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*~
