@@ -114,10 +114,6 @@ body {
   color: var(--cyan);
 }
 
-.message {
-  color: var(--white);
-}
-
 .links {
   display: flex;
   flex-wrap: wrap;
@@ -219,10 +215,6 @@ body {
 
 .post-body ol {
   padding-left: var(--list-indent-ol);
-}
-
-.post-listing a {
-  color: var(--white);
 }
 
 .post-listing a:hover,
