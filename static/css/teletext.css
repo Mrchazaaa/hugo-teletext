@@ -115,6 +115,13 @@ body {
   align-items: start;
 }
 
+.post-listing-row {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 1ch;
+  align-items: baseline;
+}
+
 .label {
   color: var(--cyan);
 }
@@ -210,7 +217,6 @@ body {
 
 .post-listing {
   display: flex;
-  justify-content: space-between;
   align-items: baseline;
   gap: 1ch;
   width: 100%;
@@ -218,8 +224,11 @@ body {
 }
 
 .post-listing a {
-  flex: 0 1 auto;
+  flex: 1 1 auto;
   min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .page-number {
@@ -309,6 +318,11 @@ a:focus-visible {
     gap: 4px;
   }
 
+  .post-listing-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
   .post-body tr {
     grid-template-columns: 1fr;
     gap: 4px;
@@ -321,6 +335,6 @@ a:focus-visible {
   }
 
   .post-listing__page-number {
-    justify-self: start;
+    display: none;
   }
 }

@@ -11,8 +11,8 @@
     {{ end }}
 
     {{ range .Pages.ByDate.Reverse }}
-      <div class="row">
-        <div class="label">{{ .Date.Format "02 JAN" | upper }}</div>
+      <div class="post-listing-row">
+        <div class="label">{{ .Date.Format "02/01/06" }}</div>
         <div class="message post-listing">
           <a href="{{ .RelPermalink }}">{{ .Title | upper }}</a>
           {{ with .Params.pageNumber }}<span class="page-number post-listing__page-number">{{ . | upper }}</span>{{ end }}
