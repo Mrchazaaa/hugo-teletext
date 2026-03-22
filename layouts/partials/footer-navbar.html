@@ -1,0 +1,18 @@
+{{ with .Site.Menus.footer }}
+  {{ $footerMenu := .ByWeight }}
+  <section class="content-panel footer-navbar-panel footer-navbar-panel--spacer" aria-hidden="true">
+    <div class="footer-navbar">
+      {{ range $footerMenu }}
+        <span class="footer-navbar__link">{{ .Name | upper }}</span>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="content-panel footer-navbar-panel">
+    <div class="footer-navbar">
+      {{ range $footerMenu }}
+        <a class="footer-navbar__link" href="{{ .URL }}">{{ .Name | upper }}</a>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

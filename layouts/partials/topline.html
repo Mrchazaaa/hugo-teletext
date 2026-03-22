@@ -1,12 +1,12 @@
 <header class="topline">
-  <span>{{ .Params.pageNumber | default site.Params.pageNumber | default "P100" }}</span>
+  <span class="page-number">P{{ .Params.pageNumber | default site.Params.pageNumber | default "---" }}</span>
   <span>
-    {{ if .IsHome }}
+    <!-- {{ if .IsHome }}
     {{ else if .IsPage }}
       {{ .Section | upper }}
     {{ else }}
       {{ .Title | upper }}
-    {{ end }}
+    {{ end }} -->
   </span>
   <span id="clock">--:--:-- -- ---</span>
 </header>
