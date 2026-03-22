@@ -227,8 +227,60 @@ body {
   white-space: nowrap;
 }
 
-.page-number::before {
-  content: "P";
+.footer-navbar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12ch, 1fr));
+  gap: 6px;
+  border-top: 3px solid var(--blue);
+  padding: 12px 0 0;
+  background: var(--bg);
+  width: min(980px, 100%);
+  margin: 0 auto;
+}
+
+.footer-navbar__link {
+  display: block;
+  padding: 0;
+  text-align: left;
+  background: transparent;
+}
+
+.footer-navbar__link:nth-child(4n + 1) {
+  color: var(--red);
+}
+
+.footer-navbar__link:nth-child(4n + 2) {
+  color: var(--green);
+}
+
+.footer-navbar__link:nth-child(4n + 3) {
+  color: var(--yellow);
+}
+
+.footer-navbar__link:nth-child(4n + 4) {
+  color: var(--cyan);
+}
+
+.footer-navbar__link:hover,
+.footer-navbar__link:focus-visible {
+  filter: brightness(1.1);
+  outline: none;
+}
+
+.footer-navbar-panel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 18px 18px;
+  background: var(--bg);
+  z-index: 2;
+}
+
+.footer-navbar-panel--spacer {
+  position: static;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .post-listing__page-number {

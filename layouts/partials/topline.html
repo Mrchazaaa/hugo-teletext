@@ -1,5 +1,5 @@
 <header class="topline">
-  <span class="page-number">{{ .Params.pageNumber | default site.Params.pageNumber | default "---" }}</span>
+  <span class="page-number">P{{ .Params.pageNumber | default site.Params.pageNumber | default "---" }}</span>
   <span>
     <!-- {{ if .IsHome }}
     {{ else if .IsPage }}
