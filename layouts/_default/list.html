@@ -15,6 +15,7 @@
         <div class="label">{{ .Date.Format "02 JAN" | upper }}</div>
         <div class="message post-listing">
           <a href="{{ .RelPermalink }}">{{ .Title | upper }}</a>
+          {{ with .Params.pageNumber }}<span class="page-number post-listing__page-number">{{ . | upper }}</span>{{ end }}
         </div>
       </div>
     {{ else }}

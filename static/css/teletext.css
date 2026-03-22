@@ -96,6 +96,11 @@ body {
   text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.75);
 }
 
+.headline--alert .headline__name {
+  background: var(--blue);
+  color: var(--white);
+}
+
 .content-panel {
   display: grid;
   gap: 14px;
@@ -122,7 +127,6 @@ body {
 
 .post-body {
   display: grid;
-  color: var(--white);
 }
 
 .post-body > :first-child {
@@ -133,19 +137,6 @@ body {
   margin-bottom: 0;
 }
 
-.post-body p,
-.post-body ul,
-.post-body ol,
-.post-body table,
-.post-body h1,
-.post-body h2,
-.post-body h3,
-.post-body h4,
-.post-body h5,
-.post-body h6 {
-  margin: 0;
-}
-
 .post-body h1,
 .post-body h2,
 .post-body h3,
@@ -154,7 +145,7 @@ body {
 .post-body h6 {
   font-size: 1.5em;
   font-weight: 400;
-  /* color: var(--cyan); */
+  color: var(--cyan);
 }
 
 .post-body h1,
@@ -217,9 +208,31 @@ body {
   padding-left: var(--list-indent-ol);
 }
 
-.post-listing a:hover,
-.post-listing a:focus-visible {
+.post-listing {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1ch;
+  width: 100%;
+  min-width: 0;
+}
+
+.post-listing a {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.page-number {
   color: var(--yellow);
+  white-space: nowrap;
+}
+
+.page-number::before {
+  content: "P";
+}
+
+.post-listing__page-number {
+  flex: 0 0 auto;
 }
 
 a {
@@ -231,34 +244,6 @@ a:hover,
 a:focus-visible {
   color: var(--yellow);
   outline: none;
-}
-
-.footer {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
-  font-size: clamp(0.75rem, 1.2vw, 0.95rem);
-  color: var(--white);
-}
-
-.footer span:nth-child(1) {
-  color: var(--red);
-}
-
-.footer span:nth-child(2) {
-  color: var(--yellow);
-}
-
-.footer span:nth-child(3) {
-  color: var(--cyan);
-}
-
-.footer span:nth-child(4) {
-  color: var(--magenta);
-}
-
-.footer span:nth-child(5) {
-  text-align: right;
 }
 
 @media (max-width: 760px) {
@@ -277,11 +262,13 @@ a:focus-visible {
     gap: 4px;
   }
 
-  .footer {
-    grid-template-columns: 1fr 1fr;
+  .post-listing {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
 
-  .footer span:nth-child(5) {
-    text-align: left;
+  .post-listing__page-number {
+    justify-self: start;
   }
 }
