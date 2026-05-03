@@ -13,7 +13,9 @@
   <main class="page" aria-label="{{ if .IsHome }}{{ .Title }} portfolio{{ else }}{{ .Title }}{{ end }}">
     {{ block "main" . }}{{ end }}
   </main>
-  {{ partial "footer-navbar.html" . }}
+  {{ if .Param "showFooter" }}
+    {{ partial "footer-navbar.html" . }}
+  {{ end }}
   <script src="{{ `js/clock.js` | relURL }}" defer></script>
 </body>
 </html>
