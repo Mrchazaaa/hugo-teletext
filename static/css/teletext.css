@@ -216,7 +216,7 @@ body {
 
 .post-body td:first-child,
 .post-body th:first-child {
-  /* color: var(--cyan); */
+  color: var(--text-highlight);
   width: var(--label-width);
 }
 
