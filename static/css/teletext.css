@@ -13,6 +13,14 @@
   --red: #ff4a4a;
   --green: #5dff6d;
   --magenta: #ff4fd8;
+  --text-base: var(--cyan);
+  --text-highlight: var(--yellow);
+  --text-link: var(--magenta);
+  --text-link-hover: var(--text-highlight);
+  --nav-text-1: var(--red);
+  --nav-text-2: var(--green);
+  --nav-text-3: var(--text-highlight);
+  --nav-text-4: var(--text-base);
   --layout-gap: 12px;
   --label-width: 12ch;
   --content-spacing: 0.35rem;
@@ -29,7 +37,7 @@ body {
   margin: 0;
   min-height: 100%;
   background: var(--bg);
-  color: var(--white);
+  color: var(--text-base);
   font-family: "Mode7", "Courier New", monospace;
   text-transform: uppercase;
 }
@@ -75,7 +83,7 @@ body {
   grid-template-columns: auto 1fr auto;
   gap: 12px;
   align-items: center;
-  color: var(--yellow);
+  color: var(--text-highlight);
   font-size: clamp(0.85rem, 1.5vw, 1.05rem);
   letter-spacing: 0.08em;
 }
@@ -87,18 +95,13 @@ body {
 
 .headline__name {
   background: var(--blue);
-  color: var(--yellow);
+  color: var(--text-highlight);
   font-size: clamp(1.9rem, 4.8vw, 4.6rem);
   font-weight: 700;
   line-height: 1;
   text-align: center;
   padding: 14px 16px 12px;
   text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.75);
-}
-
-.headline--alert .headline__name {
-  background: var(--blue);
-  color: var(--white);
 }
 
 .content-panel {
@@ -123,7 +126,7 @@ body {
 }
 
 .label {
-  color: var(--cyan);
+  color: var(--text-highlight);
 }
 
 .links {
@@ -152,7 +155,7 @@ body {
 .post-body h6 {
   font-size: 1.5em;
   font-weight: 400;
-  color: var(--cyan);
+  color: var(--text-highlight);
 }
 
 .post-body h1,
@@ -197,7 +200,7 @@ body {
 
 .post-body td:first-child,
 .post-body th:first-child {
-  color: var(--cyan);
+  /* color: var(--cyan); */
   width: var(--label-width);
 }
 
@@ -232,7 +235,7 @@ body {
 }
 
 .page-number {
-  color: var(--yellow);
+  color: var(--text-highlight);
   white-space: nowrap;
 }
 
@@ -255,19 +258,19 @@ body {
 }
 
 .footer-navbar__link:nth-child(4n + 1) {
-  color: var(--red);
+  color: var(--nav-text-1);
 }
 
 .footer-navbar__link:nth-child(4n + 2) {
-  color: var(--green);
+  color: var(--nav-text-2);
 }
 
 .footer-navbar__link:nth-child(4n + 3) {
-  color: var(--yellow);
+  color: var(--nav-text-3);
 }
 
 .footer-navbar__link:nth-child(4n + 4) {
-  color: var(--cyan);
+  color: var(--nav-text-4);
 }
 
 .footer-navbar__link:hover,
@@ -297,13 +300,13 @@ body {
 }
 
 a {
-  color: var(--magenta);
+  color: var(--text-link);
   text-decoration: none;
 }
 
 a:hover,
 a:focus-visible {
-  color: var(--yellow);
+  color: var(--text-link-hover);
   outline: none;
 }
 
