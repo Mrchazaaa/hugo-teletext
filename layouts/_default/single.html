@@ -1,20 +1,8 @@
 {{ define "main" }}
   {{ partial "topline.html" (dict "pageNumber" (.Params.pageNumber | default site.Params.pageNumber)) }}
-  {{ partial "headline.html" (dict "title" .Title) }}
+  {{ partial "headline.html" (dict "title" .Title "subtitle" (.Date.Format "02 JAN 2006")) }}
 
   <section class="content-panel">
-    <div class="row">
-      <div class="label">DATE</div>
-      <div class="message">{{ .Date.Format "02 JAN 2006" | upper }}</div>
-    </div>
-
-    {{ with .Params.description }}
-      <div class="row">
-        <div class="label">ABOUT</div>
-        <div class="message">{{ . | upper }}</div>
-      </div>
-    {{ end }}
-
     <article class="post-body">
       {{ .Content }}
     </article>

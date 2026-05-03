@@ -1,3 +1,8 @@
 <section class="headline">
-  <div class="headline__name">{{ .title | upper }}</div>
+  <div class="headline__name">
+    <div class="headline__title">{{ .title | upper }}</div>
+    {{ with .subtitle }}
+      <div class="headline__subtitle">{{ . | upper }}</div>
+    {{ end }}
+  </div>
 </section>

@@ -5,7 +5,7 @@
 }
 
 :root {
-  --bg: #000;
+  --black: #000;
   --blue: #0a39ff;
   --cyan: #39fff2;
   --yellow: #fff15a;
@@ -13,6 +13,7 @@
   --red: #ff4a4a;
   --green: #5dff6d;
   --magenta: #ff4fd8;
+  --bg: var(--black);
   --text-base: var(--white);
   --text-highlight: var(--yellow);
   --text-link: var(--cyan);
@@ -94,14 +95,25 @@ body {
 }
 
 .headline__name {
+  display: grid;
+  gap: 8px;
   background: var(--blue);
   color: var(--text-highlight);
-  font-size: clamp(1.9rem, 4.8vw, 4.6rem);
-  font-weight: 700;
-  line-height: 1;
   text-align: center;
   padding: 14px 16px 12px;
   text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.75);
+}
+
+.headline__title {
+  font-size: clamp(1.9rem, 4.8vw, 4.6rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.headline__subtitle {
+  font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+  letter-spacing: 0.08em;
+  line-height: 1;
 }
 
 .content-panel {
@@ -120,9 +132,13 @@ body {
 
 .post-listing-row {
   display: grid;
-  grid-template-columns: max-content 1fr;
+  grid-template-columns: max-content minmax(0, 1fr);
   gap: 1ch;
   align-items: baseline;
+}
+
+.post-listing-row .message {
+  min-width: 0;
 }
 
 .label {
@@ -228,6 +244,13 @@ body {
 
 .post-listing a {
   flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.post-listing__description {
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
