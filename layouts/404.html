@@ -1,7 +1,6 @@
 {{ define "main" }}
-  <section class="headline">
-    <div class="headline__name">404 NOT FOUND</div>
-  </section>
+  {{ partial "topline.html" (dict "pageNumber" "404") }}
+  {{ partial "headline.html" (dict "title" "404 NOT FOUND") }}
 
   <section class="content-panel">
     <article class="post-body">

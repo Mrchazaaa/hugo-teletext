@@ -1,7 +1,6 @@
 {{ define "main" }}
-  <section class="headline">
-    <div class="headline__name">{{ .Title | upper }}</div>
-  </section>
+  {{ partial "topline.html" (dict "pageNumber" (.Params.pageNumber | default site.Params.pageNumber)) }}
+  {{ partial "headline.html" (dict "title" .Title) }}
 
   <section class="content-panel">
     <div class="row">

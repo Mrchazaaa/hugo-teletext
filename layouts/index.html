@@ -1,5 +1,6 @@
 {{ define "main" }}
-  {{ partial "headline.html" . }}
+  {{ partial "topline.html" (dict "pageNumber" (.Params.pageNumber | default site.Params.pageNumber)) }}
+  {{ partial "headline.html" (dict "title" .Title) }}
 
   {{ if .Content }}
     <section class="content-panel">
