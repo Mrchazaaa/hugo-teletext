@@ -1,6 +1,6 @@
 {{ define "main" }}
   {{ partial "topline.html" (dict "pageNumber" (.Params.pageNumber | default site.Params.pageNumber)) }}
-  {{ partial "headline.html" (dict "title" .Title "subtitle" (.Date.Format "02 JAN 2006")) }}
+  {{ partial "headline.html" (dict "title" .Title "subtitle" (upper (.Date.Format "02 Jan 2006"))) }}
 
   <section class="content-panel">
     <article class="post-body">
