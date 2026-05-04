@@ -180,12 +180,19 @@ body {
 .post-body h4,
 .post-body h5,
 .post-body h6,
+.post-body img,
 .post-body p,
 .post-body table,
 .post-body ol,
 .post-body hr,
 .post-body ul {
   margin: var(--content-spacing) 0;
+}
+
+.post-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 .post-body table {
