@@ -8,6 +8,7 @@
   <link rel="apple-touch-icon" href="{{ `star.ico` | relURL }}">
   <link rel="preload" href="{{ `fonts/MODE7GX3.TTF` | relURL }}" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="{{ `css/teletext.css` | relURL }}">
+  {{ partial "head-extra.html" . }}
 </head>
 <body{{ if site.Params.enableScanlines }} class="scanlines-enabled"{{ end }}>
   <main class="page" aria-label="{{ if .IsHome }}{{ .Title }} portfolio{{ else }}{{ .Title }}{{ end }}">

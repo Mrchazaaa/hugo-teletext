@@ -38,6 +38,18 @@ title: "Your Name"
 | Links | [GitHub](https://github.com/yourname) [Posts](/posts/) |
 ```
 
+## Optional Head Partial
+
+If a site needs to add extra assets to `<head>` without overriding the full base template, it can define `layouts/partials/head-extra.html`.
+
+Example:
+
+```html
+<link rel="stylesheet" href="{{ `css/custom.css` | relURL }}">
+```
+
+The theme will render this partial after its main stylesheet link.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
