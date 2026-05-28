@@ -1,0 +1,56 @@
+$black: #000;
+$blue: #0a39ff;
+$cyan: #39fff2;
+$yellow: #fff15a;
+$white: #f5f5f5;
+$red: #ff2b2b;
+$green: #5dff6d;
+$magenta: #ff4fd8;
+
+$bg: $black;
+$text-base: $white;
+$text-highlight-primary: $yellow;
+$text-highlight-secondary: $red;
+$text-link: $cyan;
+$text-link-hover: $magenta;
+$nav-text-1: $red;
+$nav-text-2: $green;
+$nav-text-3: $yellow;
+$nav-text-4: $white;
+$layout-gap: 12px;
+$label-width: 12ch;
+$content-spacing: 0.7rem;
+$content-spacing-tight: 0.45rem;
+$content-spacing-section: 1.15rem;
+$content-spacing-media: 1rem;
+$list-indent-ul: 1.25em;
+$list-indent-ol: 2.5em;
+
+@mixin theme-css-variables {
+  --black: #{$black};
+  --blue: #{$blue};
+  --cyan: #{$cyan};
+  --yellow: #{$yellow};
+  --white: #{$white};
+  --red: #{$red};
+  --green: #{$green};
+  --magenta: #{$magenta};
+  --bg: #{$bg};
+  --text-base: #{$text-base};
+  --text-highlight-primary: #{$text-highlight-primary};
+  --text-highlight-secondary: #{$text-highlight-secondary};
+  --text-link: #{$text-link};
+  --text-link-hover: #{$text-link-hover};
+  --nav-text-1: #{$nav-text-1};
+  --nav-text-2: #{$nav-text-2};
+  --nav-text-3: #{$nav-text-3};
+  --nav-text-4: #{$nav-text-4};
+  --layout-gap: #{$layout-gap};
+  --label-width: #{$label-width};
+  --content-spacing: #{$content-spacing};
+  --content-spacing-tight: #{$content-spacing-tight};
+  --content-spacing-section: #{$content-spacing-section};
+  --content-spacing-media: #{$content-spacing-media};
+  --list-indent-ul: #{$list-indent-ul};
+  --list-indent-ol: #{$list-indent-ol};
+}

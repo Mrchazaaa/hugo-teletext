@@ -7,7 +7,8 @@
   <link rel="icon" type="image/x-icon" href="{{ `star.ico` | relURL }}">
   <link rel="apple-touch-icon" href="{{ `star.ico` | relURL }}">
   <link rel="preload" href="{{ `fonts/MODE7GX3.TTF` | relURL }}" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="{{ `css/teletext.css` | relURL }}">
+  {{ $teletextCSS := resources.Get "scss/teletext.scss" | toCSS (dict "targetPath" "css/teletext.css") }}
+  <link rel="stylesheet" href="{{ $teletextCSS.RelPermalink }}">
   {{ partial "head-extra.html" . }}
 </head>
 <body{{ if site.Params.enableScanlines }} class="scanlines-enabled"{{ end }}>

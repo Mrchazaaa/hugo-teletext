@@ -1,0 +1,17 @@
+{{ $id := .Get "id" }}
+{{ $title := .Get "title" | default "Embedded video" }}
+{{ if not $id }}
+  {{ errorf "youtubeembed shortcode requires an 'id' parameter: %s" .Position }}
+{{ end }}
+
+<div class="video-frame">
+  <iframe
+    class="video-frame__iframe"
+    src="https://www.youtube-nocookie.com/embed/{{ $id }}"
+    title="{{ $title }}"
+    loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe>
+</div>

@@ -1,0 +1,34 @@
+{{- $align := lower (.Get "align" | default "center") -}}
+{{- if not (in (slice "left" "right" "center") $align) -}}
+  {{- $align = "center" -}}
+{{- end -}}
+{{- $display := lower (.Get "display" | default "block") -}}
+{{- if not (in (slice "block" "inline") $display) -}}
+  {{- $display = "block" -}}
+{{- end -}}
+{{- $variant := lower (.Get "variant" | default "outline") -}}
+{{- if not (in (slice "outline" "solid") $variant) -}}
+  {{- $variant = "outline" -}}
+{{- end -}}
+{{- $width := lower (.Get "width" | default "default") -}}
+{{- if not (in (slice "default" "full") $width) -}}
+  {{- $width = "default" -}}
+{{- end -}}
+{{- $title := .Get "title" -}}
+{{- $content := .Page.RenderString (dict "display" $display) .Inner -}}
+
+{{- if eq $display "inline" -}}
+<span class="infobox infobox--inline infobox--{{ $variant }} infobox--{{ $align }} infobox--width-{{ $width }}">
+  {{- with $title }}
+    <span class="infobox__title">{{ . }}</span>
+  {{- end }}
+  <span class="infobox__content">{{- $content | safeHTML -}}</span>
+</span>
+{{- else -}}
+<aside class="infobox infobox--block infobox--{{ $variant }} infobox--{{ $align }} infobox--width-{{ $width }}">
+  {{- with $title }}
+    <span class="infobox__title">{{ . }}</span>
+  {{- end }}
+  <span class="infobox__content">{{- $content | safeHTML -}}</span>
+</aside>
+{{- end -}}

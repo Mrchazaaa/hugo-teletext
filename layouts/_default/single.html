@@ -6,7 +6,7 @@
     <article class="post-body">
       {{ .Content }}
     </article>
-
-    <a href="{{ `posts/` | relURL }}">ALL POSTS</a>
+    <hr class="post-footer-divider"/>
+    <a class="post-footer-link" href="{{ `posts/` | relURL }}">ALL POSTS</a>
   </section>
 {{ end }}
