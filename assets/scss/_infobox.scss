@@ -1,0 +1,93 @@
+.infobox {
+  border: 3px solid var(--blue);
+  padding: 0.75rem 1rem 0.9rem;
+}
+
+.infobox--outline {
+  background: transparent;
+}
+
+.infobox--solid {
+  background: var(--blue);
+}
+
+.infobox--block {
+  display: block;
+}
+
+.infobox--block.infobox--width-default {
+  width: unquote("min(100%, 32rem)");
+}
+
+.infobox--block.infobox--width-full {
+  width: 100%;
+}
+
+.infobox--center {
+  margin: 1rem auto;
+}
+
+.infobox--left {
+  float: left;
+  margin: 0.2rem 1.2rem 0.9rem 0;
+}
+
+.infobox--right {
+  float: right;
+  margin: 0.2rem 0 0.9rem 1.2rem;
+}
+
+.infobox--inline {
+  display: block;
+  max-width: 100%;
+  margin-top: 0.2rem;
+  margin-bottom: 0.9rem;
+  padding: 0.5rem 0.75rem 0.6rem;
+}
+
+.infobox--inline.infobox--width-default {
+  width: unquote("min(100%, 24rem)");
+}
+
+.infobox--inline.infobox--width-full {
+  width: 100%;
+}
+
+.infobox__title {
+  color: var(--text-highlight-primary);
+}
+
+.infobox--block .infobox__title {
+  display: block;
+  margin: 0 0 0.45rem;
+}
+
+.infobox--inline .infobox__title {
+  display: block;
+  margin: 0 0 0.35rem;
+}
+
+.infobox__content > :first-child {
+  margin-top: 0;
+}
+
+.infobox__content > :last-child {
+  margin-bottom: 0;
+}
+
+.infobox--inline .infobox__content > :first-child {
+  margin-top: 0;
+}
+
+.infobox--inline .infobox__content > :last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 760px) {
+  .infobox--block,
+  .infobox--inline {
+    float: none;
+    width: 100%;
+    margin: 0.8rem 0;
+  }
+}
