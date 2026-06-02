@@ -17,7 +17,18 @@
               <a href="{{ .RelPermalink }}">{{ .Title | upper }}</a>
               {{ with .Params.pageNumber }}<span class="page-number post-listing__page-number">{{ . | upper }}</span>{{ end }}
             </div>
-            {{ with .Description }}
+            {{ $description := .Description }}
+            {{ if not $description }}
+              {{ range findRE "(?s)<p[^>]*>.*?</p>" (printf "%s" .Content) }}
+                {{ if not $description }}
+                  {{ $text := . | plainify | chomp }}
+                  {{ if $text }}
+                    {{ $description = $text }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+            {{ with $description }}
               <div class="post-listing__description">{{ . | upper }}</div>
             {{ end }}
         </div>
