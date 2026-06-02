@@ -1,10 +1,11 @@
 {{ $id := .Get "id" }}
 {{ $title := .Get "title" | default "Embedded video" }}
+{{- $border := ne (lower (.Get "border" | default "true")) "false" -}}
 {{ if not $id }}
   {{ errorf "youtubeembed shortcode requires an 'id' parameter: %s" .Position }}
 {{ end }}
 
-<div class="video-frame">
+<div class="video-frame{{ if $border }} teletext-box{{ end }}">
   <iframe
     class="video-frame__iframe"
     src="https://www.youtube-nocookie.com/embed/{{ $id }}"
