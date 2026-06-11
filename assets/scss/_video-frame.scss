@@ -1,10 +1,11 @@
 .video-frame {
-  width: 78%;
+  width: var(--media-width);
   max-width: 720px;
   aspect-ratio: 16 / 9;
-  margin: 1rem auto 1.2rem;
+  margin-block: 1rem 1.2rem;
+  margin-inline: auto;
   overflow: hidden;
-  background: linear-gradient(180deg, #0a39ff 0%, #0a39ff 58%, #7bbcff 100%);
+  background: var(--media-background);
 }
 
 .video-frame__iframe {
