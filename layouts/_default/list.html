@@ -3,6 +3,7 @@
   {{ partial "headline.html" (dict "title" .Title) }}
 
   <section class="content-panel">
+    {{ $paginator := false }}
     {{ if .Content }}
       <article class="post-body">
         {{ .Content }}
@@ -10,6 +11,7 @@
     {{ end }}
 
     {{ if eq .Section "posts" }}
+      {{ $paginator = .Paginate .Pages }}
       {{ $tags := slice }}
       {{ range .Pages }}
         {{ range .Params.tags }}
@@ -32,7 +34,21 @@
       </div>
     {{ end }}
 
-    {{ partial "post-list.html" .Pages }}
+    {{ if eq .Section "posts" }}
+      <div class="post-list" data-post-page>
+        {{ partial "post-list.html" $paginator.Pages }}
+      </div>
+      <div class="post-list" data-post-filter-results data-page-size="{{ len $paginator.First.Pages }}" hidden></div>
+      <template data-post-filter-source>
+        {{ partial "post-list.html" .Pages }}
+      </template>
+      <div data-pagination>
+        {{ partial "pagination.html" $paginator }}
+      </div>
+      <div data-filter-pagination hidden></div>
+    {{ else }}
+      {{ partial "post-list.html" .Pages }}
+    {{ end }}
     <hr class="post-footer-divider"/>
     <a class="post-footer-link" href="{{ `/` | relURL }}">HOME</a>
   </section>

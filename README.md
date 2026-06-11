@@ -52,7 +52,15 @@ The theme will render this partial after its main stylesheet link.
 
 ## Post Filters
 
-The posts list displays post `tags` as client-side filters. Topic links on single post pages return to the filtered posts list. Hugo taxonomy and term pages are not required.
+The posts list displays post `tags` as client-side filters. Filtered views use client-side pagination with the same page size as the standard post listing. Topic links on single post pages return to the filtered posts list. Hugo taxonomy and term pages are not required.
+
+## Post Pagination
+
+The posts list uses Hugo's built-in pagination. Set the number of posts per page in the site config:
+
+```toml
+paginate = 10
+```
 
 ## License
 

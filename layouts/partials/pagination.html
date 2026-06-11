@@ -1,0 +1,21 @@
+{{ if gt .TotalPages 1 }}
+  <nav class="pagination" aria-label="Post listing pages">
+    {{ with .Prev }}
+      <a class="control pagination__direction" href="{{ .URL }}" rel="prev">PREV</a>
+    {{ else }}
+      <span class="pagination__direction" aria-hidden="true">PREV</span>
+    {{ end }}
+
+    <div class="pagination__pages">
+      {{ range .Pagers }}
+        <a class="control" href="{{ .URL }}"{{ if eq .PageNumber $.PageNumber }} aria-current="page"{{ end }} aria-label="Page {{ .PageNumber }}">{{ .PageNumber }}</a>
+      {{ end }}
+    </div>
+
+    {{ with .Next }}
+      <a class="control pagination__direction" href="{{ .URL }}" rel="next">NEXT</a>
+    {{ else }}
+      <span class="pagination__direction" aria-hidden="true">NEXT</span>
+    {{ end }}
+  </nav>
+{{ end }}

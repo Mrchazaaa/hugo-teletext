@@ -164,6 +164,11 @@ body {
   align-items: start;
 }
 
+.post-list {
+  display: grid;
+  gap: 24px;
+}
+
 .post-listing-row {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
@@ -297,6 +302,24 @@ b {
 .post-footer-link {
   display: inline-block;
   padding-top: 0.25rem;
+}
+
+.pagination {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--layout-gap);
+  align-items: center;
+}
+
+.pagination__pages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1ch;
+  justify-content: center;
+}
+
+.pagination__direction {
+  color: var(--text-highlight-primary);
 }
 
 .post-tags__links,
@@ -476,5 +499,11 @@ a:focus-visible {
 
   .post-listing__page-number {
     display: none;
+  }
+
+  .pagination {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: var(--mobile-layout-gap);
   }
 }
