@@ -9,37 +9,35 @@
       </article>
     {{ end }}
 
-    {{ range .Pages.ByDate.Reverse }}
-      <div class="post-listing-row">
-        <div class="label">{{ .Date.Format "02/01/06" }}</div>
-        <div class="message">
-            <div class="post-listing">
-              <a href="{{ .RelPermalink }}">{{ .Title | upper }}</a>
-              {{ with .Params.pageNumber }}<span class="page-number post-listing__page-number">{{ . | upper }}</span>{{ end }}
-            </div>
-            {{ $description := .Description }}
-            {{ if not $description }}
-              {{ range findRE "(?s)<p[^>]*>.*?</p>" (printf "%s" .Content) }}
-                {{ if not $description }}
-                  {{ $text := . | plainify | chomp }}
-                  {{ if $text }}
-                    {{ $description = $text }}
-                  {{ end }}
-                {{ end }}
-              {{ end }}
+    {{ if eq .Section "posts" }}
+      {{ $tags := slice }}
+      {{ range .Pages }}
+        {{ range .Params.tags }}
+          {{ $tags = $tags | append . }}
+        {{ end }}
+      {{ end }}
+      <nav class="post-filters row" aria-label="Filter posts by topic" data-post-filters>
+        <div class="post-filters__content">
+          <div class="post-filters__links" id="post-filter-links">
+            <a class="control" href="{{ `posts/` | relURL }}" data-post-filter="" aria-current="page">ALL</a>
+            {{ range sort (uniq $tags) }}
+              <a class="control" href="{{ printf `posts/?tag=%s` (partial `tag-key.html` .) | relURL }}" data-post-filter="{{ partial `tag-key.html` . }}">{{ . | upper }}</a>
             {{ end }}
-            {{ with $description }}
-              <div class="post-listing__description">{{ . | upper }}</div>
-            {{ end }}
+          </div>
         </div>
-      </div>
-    {{ else }}
-      <div class="row">
+      </nav>
+      <div class="row post-filter-status" data-post-filter-status hidden>
         <div class="label">INFO</div>
-        <div class="message">NO POSTS PUBLISHED.</div>
+        <div class="message">NO POSTS MATCH THIS FILTER.</div>
       </div>
     {{ end }}
+
+    {{ partial "post-list.html" .Pages }}
     <hr class="post-footer-divider"/>
     <a class="post-footer-link" href="{{ `/` | relURL }}">HOME</a>
   </section>
+
+  {{ if eq .Section "posts" }}
+    <script src="{{ `js/post-filter.js` | relURL }}" defer></script>
+  {{ end }}
 {{ end }}

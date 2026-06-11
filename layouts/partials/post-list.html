@@ -1,0 +1,41 @@
+{{ range .ByDate.Reverse }}
+  {{ $tagKeys := slice }}
+  {{ range .Params.tags }}
+    {{ $tagKeys = $tagKeys | append (partial "tag-key.html" .) }}
+  {{ end }}
+  <div class="post-listing-row"{{ with $tagKeys }} data-post-tags="{{ delimit . " " }}"{{ end }}>
+    <div class="label">{{ .Date.Format "01/06" }}</div>
+    <div class="message">
+      <div class="post-listing">
+        <a href="{{ .RelPermalink }}">{{ .Title | upper }}</a>
+        {{ with .Params.pageNumber }}<span class="page-number post-listing__page-number">{{ . | upper }}</span>{{ end }}
+      </div>
+      {{ $description := .Description }}
+      {{ if not $description }}
+        {{ range findRE "(?s)<p[^>]*>.*?</p>" (printf "%s" .Content) }}
+          {{ if not $description }}
+            {{ $text := . | plainify | chomp }}
+            {{ if $text }}
+              {{ $description = $text }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ with $description }}
+        <div class="post-listing__description">{{ . | upper }}</div>
+      {{ end }}
+      {{ with .Params.tags }}
+        <div class="post-listing__tags" aria-label="Topics">
+          {{ range . }}
+            <a class="control" href="{{ printf `posts/?tag=%s` (partial `tag-key.html` .) | relURL }}">{{ . | upper }}</a>
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+  </div>
+{{ else }}
+  <div class="row">
+    <div class="label">INFO</div>
+    <div class="message">NO POSTS PUBLISHED.</div>
+  </div>
+{{ end }}

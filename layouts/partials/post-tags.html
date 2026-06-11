@@ -1,0 +1,9 @@
+{{ with .Params.tags }}
+  <nav class="post-tags row" aria-label="Topics">
+    <div class="post-tags__links">
+      {{ range . }}
+        <a class="control" href="{{ printf `posts/?tag=%s` (partial `tag-key.html` .) | relURL }}">{{ . | upper }}</a>
+      {{ end }}
+    </div>
+  </nav>
+{{ end }}

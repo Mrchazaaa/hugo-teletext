@@ -3,6 +3,7 @@
   {{ partial "headline.html" (dict "title" .Title "subtitle" (upper (.Date.Format "02 Jan 2006"))) }}
 
   <section class="content-panel">
+    {{ partial "post-tags.html" . }}
     <article class="post-body">
       {{ .Content }}
     </article>

@@ -50,6 +50,10 @@ Example:
 
 The theme will render this partial after its main stylesheet link.
 
+## Post Filters
+
+The posts list displays post `tags` as client-side filters. Topic links on single post pages return to the filtered posts list. Hugo taxonomy and term pages are not required.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
