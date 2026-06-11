@@ -131,12 +131,6 @@ b {
   color: var(--text-highlight-secondary);
 }
 
-.links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
 .post-body {
   display: flow-root;
   max-width: 76ch;
@@ -298,7 +292,6 @@ b {
 .post-tags,
 .post-filters {
   grid-template-columns: 1fr;
-  gap: var(--content-spacing-tight);
 }
 
 .control {
@@ -322,27 +315,9 @@ b {
   color: var(--control-hover-text);
 }
 
-.control[aria-current="page"],
-.control[aria-expanded="true"] {
+.control[aria-current="page"] {
   background: var(--control-active-bg);
   color: var(--control-active-text);
-}
-
-.control:disabled,
-.control[aria-disabled="true"] {
-  background: var(--control-disabled-bg);
-  color: var(--control-disabled-text);
-  cursor: not-allowed;
-}
-
-.control--destructive {
-  color: var(--control-destructive);
-}
-
-.control--destructive:hover,
-.control--destructive:focus-visible {
-  background: var(--control-destructive);
-  color: var(--black);
 }
 
 .post-filters__content {
