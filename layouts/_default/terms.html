@@ -1,0 +1,10 @@
+{{ define "main" }}
+  {{ partial "topline.html" (dict "pageNumber" (.Params.pageNumber | default site.Params.pageNumber)) }}
+  {{ partial "headline.html" (dict "title" .Title) }}
+
+  <section class="content-panel">
+    {{ partial "post-filters.html" . }}
+    <hr class="post-footer-divider"/>
+    <a class="post-footer-link" href="{{ `/` | relURL }}">HOME</a>
+  </section>
+{{ end }}
