@@ -59,7 +59,8 @@ The posts list displays post `tags` as links to Hugo taxonomy term pages. Post a
 The posts list uses Hugo's built-in pagination. Set the number of posts per page in the site config:
 
 ```toml
-paginate = 10
+[pagination]
+pagerSize = 10
 ```
 
 ## License
