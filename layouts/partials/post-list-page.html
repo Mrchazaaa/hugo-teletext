@@ -1,0 +1,19 @@
+{{ partial "topline.html" (dict "pageNumber" (.Params.pageNumber | default site.Params.pageNumber)) }}
+{{ partial "headline.html" (dict "title" .Title) }}
+
+<section class="content-panel">
+  {{ if .Content }}
+    <article class="post-body">
+      {{ .Content }}
+    </article>
+  {{ end }}
+
+  {{ $paginator := .Paginate .Pages }}
+  {{ partial "post-filters.html" . }}
+  <div class="post-list">
+    {{ partial "post-list.html" $paginator.Pages }}
+  </div>
+  {{ partial "pagination.html" $paginator }}
+  <hr class="post-footer-divider"/>
+  <a class="post-footer-link" href="{{ `/` | relURL }}">HOME</a>
+</section>

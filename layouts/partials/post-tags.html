@@ -1,8 +1,8 @@
-{{ with .Params.tags }}
+{{ with .GetTerms "tags" }}
   <nav class="post-tags row" aria-label="Topics">
     <div class="post-tags__links">
       {{ range . }}
-        <a class="control" href="{{ printf `posts/?tag=%s` (partial `tag-key.html` .) | relURL }}">{{ . | upper }}</a>
+        <a class="control" href="{{ partial `term-url.html` . }}">{{ .LinkTitle | upper }}</a>
       {{ end }}
     </div>
   </nav>

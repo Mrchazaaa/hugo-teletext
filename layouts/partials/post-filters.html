@@ -1,0 +1,10 @@
+<nav class="post-filters row" aria-label="Filter posts by topic">
+  <div class="post-filters__content">
+    <div class="post-filters__links">
+      <a class="control" href="{{ `posts/` | relURL }}"{{ if eq .Section `posts` }} aria-current="page"{{ end }}>ALL</a>
+      {{ range site.Taxonomies.tags.Alphabetical }}
+        <a class="control" href="{{ partial `term-url.html` .Page }}"{{ if eq $.RelPermalink .Page.RelPermalink }} aria-current="page"{{ end }}>{{ .Page.LinkTitle | upper }}</a>
+      {{ end }}
+    </div>
+  </div>
+</nav>

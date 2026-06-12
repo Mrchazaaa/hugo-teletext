@@ -1,0 +1,6 @@
+{{- $url := .RelPermalink -}}
+{{- if in .LinkTitle `#` -}}
+  {{- $url = printf `tags/%s/` (.LinkTitle | lower) | relURL -}}
+  {{- $url = replace $url `#` `%23` -}}
+{{- end -}}
+{{- return $url -}}

@@ -3,13 +3,7 @@
   {{ partial "headline.html" (dict "title" .Title) }}
 
   <section class="content-panel">
-    {{ if .Content }}
-      <article class="post-body">
-        {{ .Content }}
-      </article>
-    {{ end }}
-
-    {{ partial "post-list.html" .Pages }}
+    {{ partial "post-filters.html" . }}
     <hr class="post-footer-divider"/>
     <a class="post-footer-link" href="{{ `/` | relURL }}">HOME</a>
   </section>
