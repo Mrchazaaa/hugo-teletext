@@ -383,24 +383,19 @@ b {
 .post-listing a {
   flex: 1 1 auto;
   min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }
 
 .post-listing__description {
-  display: -webkit-box;
   min-width: 0;
-  overflow: hidden;
   font-size: var(--text-size-meta);
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  overflow-wrap: anywhere;
 }
 
 .post-listing__tags {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1ch;
 }
 
 .page-number {
