@@ -16,6 +16,7 @@
   --text-highlight-secondary: #ff2b2b;
   --text-link: #39fff2;
   --text-link-hover: #ff4fd8;
+  --text-code: #7bbcff;
   --control-text: #5dff6d;
   --control-bg: transparent;
   --control-hover-text: #000;
@@ -235,6 +236,15 @@ b {
 .post-body p > a,
 .post-body li > a {
   display: inline;
+}
+
+.post-body code {
+  font-family: "Mode7", "Courier New", monospace;
+  text-transform: none;
+}
+
+.post-body :not(pre) > code {
+  color: var(--text-code);
 }
 
 .post-body img {
