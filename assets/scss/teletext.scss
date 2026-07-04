@@ -216,7 +216,7 @@ b {
   margin-block-start: var(--content-spacing-tight);
 }
 
-.post-body > :is(img, p:has(> img:only-child)),
+.post-body > :is(img, picture, p:has(> img:only-child)),
 .post-body :is(.infobox, blockquote, pre, table, hr) {
   margin-block: var(--content-spacing-media) 0;
 }
@@ -225,7 +225,7 @@ b {
   margin-block-start: 0;
 }
 
-.post-body :is(img, p:has(> img:only-child), .infobox, blockquote, pre, table, hr) + * {
+.post-body :is(img, picture, p:has(> img:only-child), .infobox, blockquote, pre, table, hr) + * {
   margin-block-start: var(--content-spacing-media);
 }
 
@@ -253,6 +253,10 @@ b {
   height: auto;
   margin-inline: auto;
   border: var(--border-width) solid var(--blue);
+}
+
+.post-body picture {
+  display: block;
 }
 
 .post-body table {
