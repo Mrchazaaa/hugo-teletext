@@ -217,8 +217,12 @@ b {
 }
 
 .post-body > :is(img, picture, p:has(> img:only-child)),
-.post-body :is(.infobox, blockquote, pre, table, hr) {
+.post-body :is(.infobox, blockquote, pre, hr) {
   margin-block: var(--content-spacing-media) 0;
+}
+
+.post-body table {
+  margin-block: 0;
 }
 
 .post-body > p:has(> img:only-child):first-child {
@@ -281,11 +285,12 @@ b {
   grid-template-columns: var(--label-width) 1fr;
   gap: var(--layout-gap);
   align-items: start;
+  margin-block-start: var(--content-spacing);
 }
 
 .post-body td,
 .post-body th {
-  padding: var(--content-spacing) 0;
+  padding: 0;
   text-align: left;
   font-weight: 400;
   vertical-align: top;
