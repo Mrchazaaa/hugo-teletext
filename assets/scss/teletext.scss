@@ -251,6 +251,13 @@ b {
   color: var(--text-code);
 }
 
+.post-body pre {
+  max-width: 100%;
+  padding-block-end: 0.5rem;
+  overflow-x: auto;
+  background-color: transparent !important;
+}
+
 .post-body img {
   display: block;
   max-width: var(--media-width);
