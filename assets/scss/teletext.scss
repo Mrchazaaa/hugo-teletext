@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: "Mode7";
-  src: url("../fonts/MODE7GX3.TTF") format("truetype");
+  src: url("{{ .fontPath }}") format("truetype");
   font-display: block;
 }
 

@@ -6,9 +6,11 @@
   <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
   <link rel="icon" type="image/x-icon" href="{{ `star.ico` | relURL }}">
   <link rel="apple-touch-icon" href="{{ `star.ico` | relURL }}">
-  <link rel="preload" href="{{ `fonts/MODE7GX3.TTF` | relURL }}" as="font" type="font/ttf" crossorigin>
-  {{ $teletextCSS := resources.Get "scss/teletext.scss" | toCSS (dict "targetPath" "css/teletext.css") }}
-  <link rel="stylesheet" href="{{ $teletextCSS.RelPermalink }}">
+  {{ $font := resources.Get "fonts/MODE7GX3.TTF" | fingerprint }}
+  <link rel="preload" href="{{ $font.RelPermalink }}" as="font" type="font/ttf" integrity="{{ $font.Data.Integrity }}" crossorigin>
+  {{ $teletextSCSS := resources.Get "scss/teletext.scss" | resources.ExecuteAsTemplate "scss/teletext.processed.scss" (dict "fontPath" $font.RelPermalink) }}
+  {{ $teletextCSS := $teletextSCSS | toCSS (dict "targetPath" "css/teletext.css") | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $teletextCSS.RelPermalink }}" integrity="{{ $teletextCSS.Data.Integrity }}" crossorigin="anonymous">
   {{ partial "head-metadata.html" . }}
   {{ partial "head-extra.html" . }}
 </head>
@@ -19,6 +21,7 @@
   {{ if .Param "showFooter" }}
     {{ partial "footer-navbar.html" . }}
   {{ end }}
-  <script src="{{ `js/clock.js` | relURL }}" defer></script>
+  {{ $clockScript := resources.Get "js/clock.js" | minify | fingerprint }}
+  <script src="{{ $clockScript.RelPermalink }}" integrity="{{ $clockScript.Data.Integrity }}" crossorigin="anonymous" defer></script>
 </body>
 </html>
