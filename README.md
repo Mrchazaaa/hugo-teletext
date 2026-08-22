@@ -20,6 +20,9 @@ theme = "hugo-teletext"
 [params]
 pageNumber = "P100"
 enableScanlines = true
+description = "A concise description of your site."
+# Optional fallback image for social previews.
+socialImage = "/images/social-preview.png"
 ```
 
 ## Homepage Content
@@ -37,6 +40,28 @@ title: "Your Name"
 | Status | Available for freelance |
 | Links | [GitHub](https://github.com/yourname) [Posts](/posts/) |
 ```
+
+## Metadata and Social Sharing
+
+The theme automatically adds canonical URLs, meta descriptions, Open Graph and
+Twitter Card metadata, JSON-LD structured data, and RSS feed discovery links.
+
+Set `params.description` to provide the fallback description for the homepage,
+list pages, and any page without its own `description`. For a social-preview
+image, set `params.socialImage` to an absolute or site-relative URL.
+
+Posts can override either value in their front matter:
+
+```yaml
+---
+description: "A concise summary of this post."
+socialImage: "preview.png"
+---
+```
+
+When no `socialImage` is set, the theme uses the first image in a post's page
+bundle, if one is available. Otherwise it emits text-only social metadata.
+
 
 ## Optional Head Partial
 

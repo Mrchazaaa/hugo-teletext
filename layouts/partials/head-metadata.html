@@ -1,0 +1,84 @@
+{{- $siteDescription := site.Params.description | default site.Title -}}
+{{- $description := .Description | default $siteDescription | plainify | htmlUnescape | truncate 160 -}}
+{{- $title := site.Title -}}
+{{- if not .IsHome -}}
+  {{- $title = printf "%s | %s" .Title site.Title -}}
+{{- end -}}
+{{- $canonicalURL := .Permalink -}}
+{{- $type := "website" -}}
+{{- if .IsPage -}}
+  {{- $type = "article" -}}
+{{- end -}}
+{{- $socialImage := .Params.socialImage | default .Params.image | default site.Params.socialImage -}}
+{{- if not $socialImage -}}
+  {{- with .Resources.ByType "image" -}}
+    {{- $socialImage = (index . 0).Permalink -}}
+  {{- end -}}
+{{- end -}}
+{{- with $socialImage -}}
+  {{- if not (urls.Parse .).IsAbs -}}
+    {{- $socialImage = . | absURL -}}
+  {{- end -}}
+{{- end -}}
+
+<link rel="canonical" href="{{ $canonicalURL }}">
+<meta name="description" content="{{ $description }}">
+
+<meta property="og:locale" content="{{ strings.Replace (site.Language.Locale | default `en-gb`) `-` `_` | upper }}">
+<meta property="og:type" content="{{ $type }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:url" content="{{ $canonicalURL }}">
+<meta property="og:site_name" content="{{ site.Title }}">
+{{- with $socialImage }}
+<meta property="og:image" content="{{ . }}">
+{{- end }}
+{{- if .IsPage }}
+<meta property="article:published_time" content="{{ .PublishDate.Format `2006-01-02T15:04:05Z07:00` }}">
+{{- with .Lastmod }}
+<meta property="article:modified_time" content="{{ .Format `2006-01-02T15:04:05Z07:00` }}">
+{{- end }}
+{{- range .Params.tags }}
+<meta property="article:tag" content="{{ . }}">
+{{- end }}
+{{- end }}
+
+<meta name="twitter:card" content="{{ if $socialImage }}summary_large_image{{ else }}summary{{ end }}">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+{{- with $socialImage }}
+<meta name="twitter:image" content="{{ . }}">
+{{- end }}
+
+{{- $schemaType := "WebPage" -}}
+{{- if .IsHome -}}
+  {{- $schemaType = "WebSite" -}}
+{{- else if .IsSection -}}
+  {{- $schemaType = "CollectionPage" -}}
+{{- else if .IsPage -}}
+  {{- $schemaType = "BlogPosting" -}}
+{{- end -}}
+{{- $schema := dict "@context" "https://schema.org" "@type" $schemaType "name" $title "description" $description "url" $canonicalURL -}}
+{{- if .IsPage -}}
+  {{- $schema = merge $schema (dict "headline" .Title "datePublished" (.PublishDate.Format "2006-01-02T15:04:05Z07:00") "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00") "mainEntityOfPage" (dict "@type" "WebPage" "@id" $canonicalURL) "author" (dict "@type" "Person" "name" site.Title)) -}}
+{{- end -}}
+{{- with $socialImage -}}
+  {{- $schema = merge $schema (dict "image" .) -}}
+{{- end -}}
+<script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>
+
+{{- $homeFeed := site.Home.OutputFormats.Get "RSS" -}}
+{{- with $homeFeed }}
+<link rel="alternate" type="application/rss+xml" title="{{ site.Title }} RSS feed" href="{{ .Permalink }}">
+{{- end }}
+{{- $postsFeed := (site.GetPage "section" "posts").OutputFormats.Get "RSS" -}}
+{{- with $postsFeed }}
+  {{- if ne .Permalink $homeFeed.Permalink }}
+<link rel="alternate" type="application/rss+xml" title="{{ site.Title }} posts RSS feed" href="{{ .Permalink }}">
+  {{- end }}
+{{- end }}
+{{- with .OutputFormats.Get "RSS" }}
+  {{- if and (ne .Permalink $homeFeed.Permalink) (ne .Permalink $postsFeed.Permalink) }}
+<link rel="alternate" type="application/rss+xml" title="{{ $.Title }} RSS feed" href="{{ .Permalink }}">
+  {{- end }}
+{{- end }}

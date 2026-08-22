@@ -9,6 +9,7 @@
   <link rel="preload" href="{{ `fonts/MODE7GX3.TTF` | relURL }}" as="font" type="font/ttf" crossorigin>
   {{ $teletextCSS := resources.Get "scss/teletext.scss" | toCSS (dict "targetPath" "css/teletext.css") }}
   <link rel="stylesheet" href="{{ $teletextCSS.RelPermalink }}">
+  {{ partial "head-metadata.html" . }}
   {{ partial "head-extra.html" . }}
 </head>
 <body{{ if site.Params.enableScanlines }} class="scanlines-enabled"{{ end }}>
