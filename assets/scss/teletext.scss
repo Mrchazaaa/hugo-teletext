@@ -311,7 +311,7 @@ b {
 
 .post-body ul,
 .post-body ol {
-  margin: 0;
+  margin-block: var(--content-spacing) 0;
   list-style-position: outside;
 }
 
