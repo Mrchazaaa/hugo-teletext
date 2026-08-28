@@ -79,6 +79,13 @@ The theme will render this partial after its main stylesheet link.
 
 The posts list displays post `tags` as links to Hugo taxonomy term pages. Post and term listings use Hugo's built-in pagination.
 
+### Draft posts
+
+Build local previews with `hugo server --buildDrafts`, then visit `/drafts/`
+directly to list posts whose Hugo `draft` front matter flag is `true`. The
+route is added as the first post filter when draft posts exist, and it is
+excluded from normal production builds.
+
 ## Post Pagination
 
 The posts list uses Hugo's built-in pagination. Set the number of posts per page in the site config:

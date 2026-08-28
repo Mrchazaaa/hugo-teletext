@@ -20,10 +20,14 @@
       {{ with $description }}
         <div class="post-listing__description">{{ . | upper }}</div>
       {{ end }}
-      {{ with .GetTerms "tags" }}
+      {{ $tags := .GetTerms "tags" }}
+      {{ if or .Draft $tags }}
         <div class="post-listing__tags" aria-label="Topics">
-          {{ range . }}
+          {{ range $tags }}
             <a class="control" href="{{ partial `term-url.html` . }}">{{ .LinkTitle | upper }}</a>
+          {{ end }}
+          {{ if .Draft }}
+            <a class="control draft-control" href="{{ `drafts/` | relURL }}">*DRAFT*</a>
           {{ end }}
         </div>
       {{ end }}

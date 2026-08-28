@@ -1,0 +1,17 @@
+{{ define "main" }}
+  {{ partial "topline.html" (dict "pageNumber" (.Params.pageNumber | default site.Params.pageNumber)) }}
+  {{ partial "headline.html" (dict "title" "DRAFT POSTS") }}
+
+  <section class="content-panel">
+    {{ $draftPosts := where site.RegularPages "Draft" true }}
+    {{ $draftPosts = where $draftPosts "Section" "posts" }}
+    {{ $paginator := .Paginate $draftPosts }}
+    {{ partial "post-filters.html" . }}
+    <div class="post-list">
+      {{ partial "post-list.html" $paginator.Pages }}
+    </div>
+    {{ partial "pagination.html" $paginator }}
+    <hr class="post-footer-divider"/>
+    <a class="post-footer-link" href="{{ `posts/` | relURL }}">ALL POSTS</a>
+  </section>
+{{ end }}

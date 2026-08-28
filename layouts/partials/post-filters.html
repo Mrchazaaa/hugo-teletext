@@ -5,6 +5,13 @@
       {{ range site.Taxonomies.tags.Alphabetical }}
         <a class="control" href="{{ partial `term-url.html` .Page }}"{{ if eq $.RelPermalink .Page.RelPermalink }} aria-current="page"{{ end }}>{{ .Page.LinkTitle | upper }}</a>
       {{ end }}
+      {{ $draftPosts := where site.RegularPages "Draft" true }}
+      {{ $draftPosts = where $draftPosts "Section" "posts" }}
+      {{ with $draftPosts }}
+        {{ with site.GetPage "section" "drafts" }}
+          <a class="control draft-control" href="{{ .RelPermalink }}"{{ if eq $.Section `drafts` }} aria-current="page"{{ end }}>*DRAFT*</a>
+        {{ end }}
+      {{ end }}
     </div>
   </div>
 </nav>

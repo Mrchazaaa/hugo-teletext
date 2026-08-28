@@ -43,7 +43,6 @@
   --list-indent-ol: 2.5em;
 
   --text-size-display: clamp(1.9rem, 4.8vw, 4.6rem);
-  --text-size-display-compact: clamp(1.3rem, 8vw, 2.4rem);
   --text-size-heading: 1.5em;
   --text-size-body: clamp(1.03rem, 1.58vw, 1.3rem);
   --text-size-supporting: clamp(0.95rem, 1.3vw, 1.15rem);
@@ -287,7 +286,7 @@ b {
   margin: 0;
 }
 
-.post-body tr {
+.post-body tr:has(> :nth-child(2):last-child) {
   display: grid;
   grid-template-columns: var(--label-width) 1fr;
   gap: var(--layout-gap);
@@ -303,8 +302,7 @@ b {
   vertical-align: top;
 }
 
-.post-body td:first-child,
-.post-body th:first-child {
+.post-body tr:has(> :nth-child(2):last-child) > :first-child {
   color: var(--text-highlight-primary);
   width: var(--label-width);
 }
@@ -373,6 +371,10 @@ b {
   text-align: center;
   text-transform: inherit;
   cursor: pointer;
+}
+
+.draft-control {
+  color: var(--text-highlight-secondary);
 }
 
 .control:hover,
@@ -500,14 +502,9 @@ a:focus-visible {
 }
 
 @media (max-width: 760px) {
-  .headline__name {
-    font-size: var(--text-size-display-compact);
-    white-space: normal;
-  }
-
   .row,
   .post-listing-row,
-  .post-body tr,
+  .post-body tr:has(> :nth-child(2):last-child),
   .post-listing {
     display: grid;
     grid-template-columns: 1fr;
