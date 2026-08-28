@@ -14,9 +14,3 @@
   height: var(--size-full);
   border: var(--size-zero);
 }
-
-@media (max-width: $video-breakpoint) {
-  .video-frame {
-    width: var(--size-full);
-  }
-}
