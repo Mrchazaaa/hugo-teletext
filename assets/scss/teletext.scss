@@ -106,7 +106,7 @@ body {
 
 .post-list {
   display: grid;
-  gap: var(--post-list-gap);
+  gap: var(--content-gap);
 }
 
 .post-listing-row {
@@ -374,7 +374,7 @@ b {
 .footer-navbar {
   display: grid;
   grid-template-columns: var(--footer-grid);
-  gap: var(--footer-gap);
+  gap: var(--headline-gap);
   border-top: var(--border-width) solid var(--blue);
   padding: var(--footer-padding);
   background: var(--bg);
