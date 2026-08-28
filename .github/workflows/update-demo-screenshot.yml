@@ -1,0 +1,48 @@
+name: Update demo screenshot
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-demo-screenshot-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  update-demo-screenshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - uses: actions/checkout@v4
+        with:
+          repository: Mrchazaaa/hugo-teletext-demo
+          path: demo
+
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: latest
+          extended: true
+
+      - name: Serve demo with this theme
+        working-directory: demo
+        run: |
+          go mod edit -replace github.com/mrchazaaa/hugo-teletext=..
+          nohup hugo server --bind 127.0.0.1 --baseURL http://127.0.0.1:1313 --disableFastRender > /tmp/hugo.log 2>&1 &
+
+      - uses: Mrchazaaa/update-screenshots-action@a71bf1dd29ca89e9b22173cd715a3fb56e1b9529 # v1
+        with:
+          url: http://127.0.0.1:1313/
+          capture_path: assets/screenshots/demo.png
+          markdown_path: README.md
+          marker_name: screenshot
+          navigation_retries: 10
+          navigation_retry_delay_ms: 1000
+          commit_changes: true
+          commit_message: "docs: refresh demo screenshot"

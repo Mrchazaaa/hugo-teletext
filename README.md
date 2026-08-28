@@ -1,5 +1,9 @@
 # hugo-teletext
 
+<!-- screenshot:start -->
+![Project screenshot](assets/screenshots/demo.png)
+<!-- screenshot:end -->
+
 A Hugo theme with a retro teletext look for a personal homepage and simple blog.
 
 ## Install
