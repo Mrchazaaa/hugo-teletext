@@ -22,7 +22,7 @@ theme = "hugo-teletext"
 
 ```toml
 [params]
-pageNumber = "P100"
+pageNumber = "100" # Displayed as P100 in the topline.
 enableScanlines = true
 description = "A concise description of your site."
 # Optional fallback image for social previews.
