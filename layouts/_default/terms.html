@@ -3,8 +3,16 @@
   {{ partial "headline.html" (dict "title" .Title) }}
 
   <section class="content-panel">
-    {{ partial "post-filters.html" . }}
+    <nav class="post-filters row" aria-label="Browse tags">
+      <div class="post-filters__content">
+        <div class="post-filters__links">
+          {{ range site.Taxonomies.tags.Alphabetical }}
+            <a href="{{ partial `term-url.html` .Page }}">{{ .Page.LinkTitle | upper }}</a>
+          {{ end }}
+        </div>
+      </div>
+    </nav>
     <hr class="post-footer-divider"/>
-    <a class="post-footer-link" href="{{ `/` | relURL }}">HOME</a>
+    {{ partial "list-footer-links.html" . }}
   </section>
 {{ end }}

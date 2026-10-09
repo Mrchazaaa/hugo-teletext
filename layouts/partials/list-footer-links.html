@@ -1,0 +1,5 @@
+<nav class="post-footer-links" aria-label="Page links">
+  <a class="post-footer-link" href="{{ `/` | relURL }}">HOME</a>
+  <a class="post-footer-link" href="{{ `tags/` | relURL }}">TAGS</a>
+  {{ with (site.GetPage `section` `posts`).OutputFormats.Get `RSS` }}<a class="post-footer-link post-footer-link--rss" href="{{ .RelPermalink }}">RSS</a>{{ end }}
+</nav>

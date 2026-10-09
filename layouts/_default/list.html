@@ -11,6 +11,6 @@
 
     {{ partial "post-list.html" .Pages }}
     <hr class="post-footer-divider"/>
-    <a class="post-footer-link" href="{{ `/` | relURL }}">HOME</a>
+    {{ partial "list-footer-links.html" . }}
   </section>
 {{ end }}
