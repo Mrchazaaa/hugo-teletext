@@ -151,6 +151,11 @@ b {
   margin-block-start: var(--content-spacing-section);
 }
 
+.post-body :is(h3, h4, h5, h6) {
+  font-size: var(--text-size-body);
+  letter-spacing: var(--letter-spacing-label);
+}
+
 .post-body :is(h1, h2, h3, h4, h5, h6) + * {
   margin-block-start: var(--content-spacing-tight);
 }
